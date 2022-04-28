@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const dbPath = 'mongodb://localhost:27017/ecommerce'
+const dbPath = 'mongodb://localhost:27017/electronics'
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options); mongo.then(() => {
