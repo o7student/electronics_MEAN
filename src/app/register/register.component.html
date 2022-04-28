@@ -1,0 +1,81 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-triangle-path" [fullScreen]="true">
+</ngx-spinner>
+<div class="container-fluid">
+	<div class="row main-content bg-success text-center">
+		<div class="col-md-4 text-center company__info">
+			<span class="company__logo">
+				<h2><span class="fa fa-android"></span></h2>
+			</span>
+			<h4 class="company_title">Welcome!</h4>
+			<h4 class="company_title">Create your Account</h4>
+		</div>
+		<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+			<div class="container-fluid">
+				<div class="row">
+
+				</div>
+				<div class="row">
+					<form control="" form="ngForm" (submit)="onRegister()" class="form-group">
+						<div class="row">
+							<input type="text" #email="ngModel" name="email" [(ngModel)]="formModel.email"
+								class="form__input" placeholder="Email" required>
+
+							<div *ngIf="email.invalid && (email.touched || email.dirty)">
+								<p class="error-class-color" *ngIf="email.hasError('required')">* Email is required
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<!-- <span class="fa fa-lock"></span> -->
+							<input type="password" #password="ngModel" name="password" [(ngModel)]="formModel.password"
+								class="form__input" placeholder="Password" required>
+
+							<div *ngIf="password.invalid && (password.touched || password.dirty)">
+								<p class="error-class-color" *ngIf="password.hasError('required')">* Password is
+									required
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<input type="text" #name="ngModel" name="name" [(ngModel)]="formModel.name"
+								class="form__input" placeholder="Name" required>
+
+							<div *ngIf="name.invalid && (name.touched || name.dirty)">
+								<p class="error-class-color" *ngIf="name.hasError('required')">* Name is required
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<input type="text" #contact="ngModel" name="contact" [(ngModel)]="formModel.contact"
+								class="form__input" placeholder="Contact" required>
+
+							<div *ngIf="contact.invalid && (contact.touched || contact.dirty)">
+								<p class="error-class-color" *ngIf="contact.hasError('required')">* Contact is required
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<input type="text" #address="ngModel" name="address" [(ngModel)]="formModel.address"
+								class="form__input" placeholder="Address" required>
+
+							<div *ngIf="address.invalid && (address.touched || address.dirty)">
+								<p class="error-class-color" *ngIf="address.hasError('required')">* Address is required
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<input type="submit" value="Register Account" class="btn">
+						</div>
+					</form>
+				</div>
+				<div class="row">
+					<p>Already a member? <a routerLink="/layout/login">Login Here</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

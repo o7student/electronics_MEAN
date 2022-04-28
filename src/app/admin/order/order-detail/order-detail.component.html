@@ -1,0 +1,105 @@
+<ngx-spinner></ngx-spinner>
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title mt-5">
+      <h2 class="pt-5 d-inline">List Order</h2>
+    </div>
+
+    <div class="container">
+      <div class="page-header">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3 body-main">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-8"> <img class="img" alt="Invoce Template"
+                    src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" /> </div>
+                <div class="col-md-4 text-right">
+                  <h4 style="color: #F81D2D;"><strong>{{orderdata.name}}</strong></h4>
+                  <p>{{orderdata.shipping_address}}</p>
+                  <p>{{orderdata.contact}}</p>
+                  <p>{{orderdata.email}}</p>
+                </div>
+              </div> <br />
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h2>Order Details</h2>
+                  <h5>Order ID : #{{orderdata._id}}</h5>
+                </div>
+              </div> <br />
+              <div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <h5>Category</h5>
+                      </th>
+                      <th>
+                        <h5>Product</h5>
+                      </th>
+                      <th>
+                        <h5>Quantity</h5>
+                      </th>
+                      <th>
+                        <h5>Price Per Item</h5>
+                      </th>
+                      <th>
+                        <h5>Total Amount</h5>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of orderproducts">
+                      <th>
+                        {{ data['category_id']['category_name'] }}
+                      </th>
+                      <th>
+                        {{ data['product_id']['product_name'] }}
+                      </th>
+                      <th>
+                        {{ data['quantity'] }}
+                      </th>
+                      <th>
+                         {{ data['price_per_item'] | currency:'INR':'symbol-narrow'}}
+                      </th>
+                      <th>
+                         {{ data['quantity']*data['price_per_item'] | currency:'INR':'symbol-narrow'}}
+                      </th>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="4">
+                        <p> <strong>Coupon Discount:  </strong> </p>
+                        <p> <strong>Total Amount: </strong> </p>
+
+                      </td>
+                      <td>
+                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>  {{ orderdata['coupon_discount'] != null ? (orderdata['coupon_discount'] | currency:'INR':'symbol-narrow') :'0' }} </strong> </p>
+                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>  {{ orderdata['total_amount'] | currency:'INR':'symbol-narrow'}} </strong> </p>
+                      </td>
+                    </tr>
+                    <tr style="color: #F81D2D;">
+                      <td class="text-right" colspan="4">
+                        <h4><strong> Grand Total:</strong></h4>
+                      </td>
+                      <td class="text-left">
+                        <h4 *ngIf="orderdata['coupon_discount'] != null" ><strong><i class="fas fa-rupee-sign" area-hidden="true"></i>  {{ orderdata['total_amount'] - orderdata['coupon_discount'] | currency:'INR':'symbol-narrow'}} </strong></h4>
+                        <h4 *ngIf="orderdata['coupon_discount'] == null" ><strong><i class="fas fa-rupee-sign" area-hidden="true"></i>  {{ orderdata['total_amount']| currency:'INR':'symbol-narrow' }} </strong></h4>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Our Clients Section -->
+
+<!-- End #main -->

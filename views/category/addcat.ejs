@@ -1,0 +1,69 @@
+<%- include('../layouts/header') -%>
+<%- include('../layouts/sidenav') -%>
+
+<form action="/webadmin/addcategory" method="post" enctype='multipart/form-data'>
+<div class="row pt-5">
+    <div class="col-md-6">
+      <div class="row">
+        <% if (locals.info) { %>
+          <h4 class="alert alert-info"><%= info %></h4>
+        <% } %>
+        <% if (locals.error) { %>
+          <h4  class="alert alert-danger"><%= error %></h4>
+        <% } %>
+        <div class="col-md-4">
+          Category Name:<br/>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class='form-control' name="category_name" id=""><br/>
+        </div>
+        <div class="col-md-4">
+          Category Image:<br/>
+        </div>
+        <div class="col-md-8">
+          <input type="file" class='form-control' name="category_image" id=""><br/>
+        </div>
+        <div class="col-md-12">
+          <input type="submit" name="Save" value="Save " class="form-control btn btn-success">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+            </tr>
+        </tfoot>
+        <tbody>
+          <% data.forEach(function(cat){ %>
+            <tr>
+                <td>
+                  <%= cat.categoryId %>
+                </td>
+                <td>
+                    <%= cat.category_name %>
+                </td>
+                <td>
+                    <img src="/public/<%= cat.image %>" style="width:50px;" class="img img-responsive"/>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+</div>
+  </form>
+
+<%- include('../layouts/footer') -%>
+

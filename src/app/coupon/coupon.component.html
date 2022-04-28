@@ -1,0 +1,46 @@
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Coupons</h2>
+            <ol>
+                <li><a routerLink="/layout/homt">Home</a></li>
+                <!-- <li><a href="portfolio.html">Product</a></li> -->
+                <li>Coupons</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row gy-4">
+                <div class="col-lg-12">
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>#</th>
+                      <th>Coupon Code</th>
+                      <th>Description</th>
+                      <th>Offer Amount</th>
+                    </tr>
+                    <tr *ngFor="let coup of couponData;index as i">
+                      <th>{{ i+1 }}</th>
+                      <td>{{ coup['coupon_code']}}</td>
+                      <td>{{ coup['description']}}</td>
+                      <td>{{ coup['offer_amount'] | currency:'INR':'symbol-narrow'}}</td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+
+        </div>
+
+
+    <div class="nodata" *ngIf="couponData==null">
+        <h3>Your wishlist is empty</h3>
+        <img src="assets/img/nodata.png" alt="">
+    </div>
+</section>

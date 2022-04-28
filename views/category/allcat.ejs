@@ -1,0 +1,126 @@
+<%- include('../layouts/header') -%>
+  <%- include('../layouts/sidenav') -%>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          <%= title %>
+        </div>
+        <div class="card-body">
+          <% if (locals.info) { %>
+            <h4 class="alert alert-info">
+              <%= info %>
+            </h4>
+            <% } %>
+              <% if (locals.error) { %>
+                <h4 class="alert alert-danger">
+                  <%= error %>
+                </h4>
+                <% } %>
+                  <table id="datatablesSimple">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th colspan="2">Operation</th>
+
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th colspan="2">Operation</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <% data.forEach(function(cat){ %>
+                        <tr>
+                          <td>
+                            <%= cat.categoryId %>
+                          </td>
+                          <td>
+                            <%= cat.category_name %>
+                          </td>
+
+                          <td>
+                            <a href="/public/<%= cat.image %>" data-lightbox="image-1" data-title="My caption">
+                              <img src="/public/<%= cat.image %>" style="width:50px;" class="img img-responsive" />
+                            </a>
+                          </td>
+
+                          <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal<%= cat.categoryId%>">
+                              Update
+                            </button>
+                            <div class="modal fade" id="exampleModal<%= cat.categoryId%>" tabindex="-1"
+                              aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                      <%= cat.category_name %>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="/webadmin/updatecat" enctype="multipart/form-data" method="post">
+                                      <table class="table table-resposive">
+                                        <tr>
+                                          <th>Name</th>
+                                          <td><input type="text" name="category_name" value="<%= cat.category_name %>"
+                                              id="" class="form-control">
+                                            <input type="hidden" name="id" value="<%= cat._id %>" id=""
+                                              class="form-control">
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <th>Image</th>
+                                          <td><input type="file" name="category_image" value="<%= cat.category_name %>"
+                                              id="" class="form-control">
+                                            <img src="/public/<%= cat.image %>" style='width:50px;'
+                                              class="img img-thumbnail" />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input type="submit" class="btn btn-primary" />
+
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td>
+                            <form action="/webadmin/updatecat" enctype="multipart/form-data" method="post">
+                              <% if(cat.status){ %>
+                                <input type="hidden" value="<%= cat._id %>" name="id" />
+                                <input type="hidden" value="false" name="status" />
+                                <input type="submit" value="Disable" class="btn btn-warning text-white">
+                                <% }else{ %>
+                                  <input type="hidden" value="<%= cat._id %>" name="id" />
+                                  <input type="hidden" value="true" name="status" />
+                                  <input type="submit" value="Enable" class="btn btn-info">
+                                  <% } %>
+
+                            </form>
+                          </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                  </table>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../layouts/footer') -%>

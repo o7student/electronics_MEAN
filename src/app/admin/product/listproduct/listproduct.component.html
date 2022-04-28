@@ -1,0 +1,43 @@
+<ngx-spinner></ngx-spinner>
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title mt-5">
+      <h2 class="pt-5 d-inline">List Product</h2>
+      <a routerLink="/adminlayout/addproduct" class="btn btn-success d-inline" style="float: right;">Add Product</a>
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Product Name</th>
+        <th>Stock</th>
+        <th>Discount</th>
+        <th>Author</th>
+        <th>Thumbnail</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let product of allproduct">
+        <td>{{ product['category_id']['category_name'] }}</td>
+        <td>{{ product['subCategory_id'] ? product['subCategory_id']['subCategory_name']: '' }}</td>
+        <td>{{ product['product_name'] }}</td>
+        <td>{{ product['stock'] }}</td>
+        <td>{{ product['discounted_price'] }}</td>
+        <td>{{ product['author_name'] }}</td>
+        <td>
+          <img [src]="getSanitizerUrl(product['image'])" width="150px">
+        </td>
+        <td>
+          <a [routerLink]="['/adminlayout/editproduct',product['_id']]">
+            <i class="fa fa-edit text-success"></i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- End Our Clients Section -->
+
+<!-- End #main -->

@@ -1,0 +1,28 @@
+<ngx-spinner></ngx-spinner>
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title mt-5">
+      <h2 class="pt-5 d-inline">List User</h2>
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Address</th>
+      </tr>
+      <tr *ngFor="let user of alluser">
+        <td>{{user['name']}}</td>
+        <td>{{user['email']}}</td>
+        <td>{{user['contact']}}</td>
+        <td>{{user['address']}}</td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- End Our Clients Section -->
+
+<!-- End #main -->

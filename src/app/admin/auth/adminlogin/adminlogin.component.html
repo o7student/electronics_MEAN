@@ -1,0 +1,53 @@
+<ngx-spinner></ngx-spinner>
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo">
+					<h2><span class="fa fa-android"></span></h2>
+				</span>
+				<h4 class="company_title">Admin! </h4>
+				<h4 class="company_title">Login</h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+
+					</div>
+					<div class="row">
+						<form control="" #form="ngForm" (submit)="onLogin()" class="form-group">
+							<div class="row">
+
+								<input type="text" #email="ngModel" name="email" [(ngModel)]="formModel.email"
+									class="form__input" placeholder="Email" required>
+
+								<div *ngIf="email.invalid && (email.touched || email.dirty)">
+									<p class="error-class-color" *ngIf="email.hasError('required')">* Email is required
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<!-- <span class="fa fa-lock"></span> -->
+
+
+								<input type="password" #password="ngModel" name="password"
+									[(ngModel)]="formModel.password" class="form__input" placeholder="Password"
+									required>
+
+								<div *ngIf="password.invalid && (password.touched || password.dirty)">
+									<p class="error-class-color" *ngIf="password.hasError('required')">* Password is
+										required
+									</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<input type="submit" value="Login" class="btn">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->

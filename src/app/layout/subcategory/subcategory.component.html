@@ -1,0 +1,33 @@
+<ngx-spinner></ngx-spinner>
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Sub Category</h2>
+      <ol>
+        <li><a routerLink="/layout/home">Home</a></li>
+        <li>Sub Category</li>
+      </ol>
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container">
+
+    <div class="row portfolio-container" data-aos="fade-up">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-card" *ngFor="let data of productData">
+        <!-- <img src="assets/img/pic/post-01.jpg" class="img-fluid" alt=""> -->
+        <img [src]="getSanitizerUrl(data['image'])" class="img-fluid" style="height:200px;width:200px;">
+        <h4>{{data['subCategory_name']}}</h4>
+        <div class="btn-group" style="margin-left:30px; margin-top:10px;">
+          <!-- <button class="btn btn-primary" (click)="eventClick(data['_id'])">view Products</button> -->
+          <a [routerLink]="['/layout/products',data['_id']]"><button class="btn btn-primary">view Products</button></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

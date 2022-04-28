@@ -1,0 +1,33 @@
+<ngx-spinner></ngx-spinner>
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title mt-5">
+      <h2 class="pt-5 d-inline">List Category</h2>
+      <a routerLink="/adminlayout/addcategory" class="btn btn-success d-inline" style="float: right;">Add Category</a>
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>Category Name</th>
+        <th>Thumbnail</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let category of allcategory">
+        <td>{{ category['category_name'] }}</td>
+        <td>
+          <img [src]="getSanitizerUrl(category['image'])" width="150px">
+        </td>
+        <td>
+          <a [routerLink]="['/adminlayout/editcategory',category['_id']]">
+            <i class="fa fa-edit text-success"></i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- End Our Clients Section -->
+
+<!-- End #main -->

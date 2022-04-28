@@ -1,0 +1,91 @@
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Product Details</h2>
+      <ol>
+        <li><a routerLink="/layout/homt">Home</a></li>
+        <!-- <li><a href="portfolio.html">Product</a></li> -->
+        <li>Product Details</li>
+      </ol>
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row gy-4" *ngIf="productData!=null">
+
+      <div class="col-lg-6">
+        <div class="portfolio-details-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+
+            <div class="swiper-slide">
+              <!-- <img src="assets/img/blog/blog-2.jpg" alt=""> -->
+              <img [src]="getSanitizerUrl(productData.image[0])" >
+            </div>
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-4 small-img">
+            <img [src]="getSanitizerUrl(productData.image[0])" width="150px" height="150px" alt="" *ngIf="productData.image[0]">
+          </div>
+
+          <div class="col-lg-4 small-img">
+            <img [src]="getSanitizerUrl(productData.image[1])" width="150px" height="150px" alt="" *ngIf="productData.image[1]">
+          </div>
+
+          <div class="col-lg-4 small-img">
+            <img [src]="getSanitizerUrl(productData.image[2])" width="150px" height="150px" alt="" *ngIf="productData.image[2]">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="portfolio-info">
+          <h3>Product Details</h3>
+          <i class="fa fa-heart" style="font-size:24px"></i>
+
+          <ul>
+            <li><strong>Product Name</strong>: {{productData.product_name}}</li>
+            <li *ngIf="productData.category_id!=null"><strong>Category</strong>: {{productData.category_id.category_name}}</li>
+            <li><strong>Product Price</strong>: {{productData.product_price}}</li>
+            <li><strong>Artist Name</strong>: {{productData.author_name}}</li>
+
+            <li *ngIf="productData.discount_applicable==true"><strong>Discount Applicable</strong>: Yes</li>
+            <li *ngIf="productData.discount_applicable==false"><strong>Discount Applicable</strong>: No</li>
+
+            <li><strong>Discount Price</strong>: {{productData.discounted_price}}</li>
+
+            <li><strong>Product Details</strong>: {{productData.description}}</li>
+          </ul>
+
+          <form>
+            <input type="number" min="1" #quantity="ngModel" name="quantity" [(ngModel)]="formModel.quantity" value="1" class="" placeholder="Quantity" required>
+            <button class="btn btn-primary btn-sm" (click)="cart(productData.category_id._id)">Add To Cart</button>
+
+          </form>
+
+        </div>
+        <div>
+
+          <!-- <button class="btn btn-primary" style="margin-top:30px;margin-left:120px;" (click)="addWishlist()">Add to
+            Wishlist</button> -->
+
+          <!-- <button class="btn btn-success" style="margin-top:30px;margin-left:120px;" (click)="placeOrder()">Place
+            order</button> -->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

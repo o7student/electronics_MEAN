@@ -1,0 +1,218 @@
+<%- include('../layouts/header') -%>
+    <%- include('../layouts/sidenav') -%>
+
+        <div class="col">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Category name</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Description</th>
+                        <th>Stock</th>
+                        <th>Discount</th>
+                        <th>Status</th>
+                        <!-- <th>Details</th> -->
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Category name</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Description</th>
+                        <th>Stock</th>
+                        <th>Discount</th>
+                        <th>Update</th>
+                        <th>Status</th>
+                        <!-- <th>Details</th> -->
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <% data.forEach(function(product){ %>
+                        <tr>
+                            <td>
+                                <%if(product.category_id!=null){%>
+
+                                    <%= product.category_id.category_name %>
+
+                                        <%}else{%>
+                                            -
+                                            <% }%>
+                            </td>
+                            <td>
+                                <%= product.product_name %>
+                            </td>
+                            <td>
+                                <%= "$" + product.product_price %>
+                            </td>
+                            <td>
+                                <%= product.description %>
+                            </td>
+                            <td>
+                                <%= product.stock %>
+                            </td>
+                            <td>
+                              <%if(product.discount_applicable ==true){%>
+
+                                <!-- Offered Product <br> -->
+                                $<%= product.discounted_price %>
+                              <%}else{%>
+                                  $0
+                              <% }%>
+
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal<%= product.categoryId%>">
+                                Update
+                              </button>
+                              <div class="modal fade" id="exampleModal<%= product.categoryId%>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">
+                                        <!-- <%= product.product_name %> -->
+                                        Update Product
+                                      </h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form action="/webadmin/updateprodut" enctype="multipart/form-data" method="post">
+                                        <table class="table table-resposive">
+                                          <tr>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Product Name</label>
+                                                <input type="text" class='form-control' name="product_name" value="<%= product.product_name %>" id="">
+                                                <input type="hidden" class='form-control' name="id" value="<%= product._id %>" id="">
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Stock</label>
+                                                <input type="number" class='form-control' name="stock" value="<%= product.stock %>" min="0" id="">
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Product Price</label>
+                                                <input type="number" min="0" class='form-control' value="<%= product.product_price %>" name="product_price" id="">
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Author Name</label>
+                                                <input type="text" class='form-control' name="author_name" value="<%= product.author_name %>" id="">
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <!-- <tr> -->
+                                            <!-- <td>
+                                              <div class="form-group">
+                                                <label>Product Image</label>
+                                                <input type="file" class='form-control' name="image" id="">
+                                              </div>
+                                            </td> -->
+                                            <!-- <td>
+                                              <div class="form-group">
+                                                <label>Stock</label>
+                                                <input type="number" class='form-control' name="stock" value="<%= product.stock %>" min="0" id="">
+                                              </div>
+                                            </td> -->
+                                          <!-- </tr> -->
+                                          <tr>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Discount Applicable</label><br>
+                                                <% if(product.discount_applicable){ %>
+                                                <input type="radio" name="discount_applicable" id="" value="true" checked> Yes
+                                                <input type="radio" name="discount_applicable" id="" value="false"> No
+                                                <% } else{ %>
+                                                <input type="radio" name="discount_applicable" id="" value="true" > Yes
+                                                <input type="radio" name="discount_applicable" id="" value="false" checked> No
+                                                <% } %>
+
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <div class="form-group">
+                                                <label>Discounted Amount</label>
+                                                <input type="number" class='form-control' name="discounted_price" value="<%= product.discounted_price %>"  min="0" value="0" id="">
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2">
+                                              <div class="form-group">
+                                                <label >Description</label>
+                                                <textarea class='form-control' name="description"><%= product.description %></textarea>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2">
+                                              <input type="submit" class="btn btn-primary" />
+
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                                <!-- <% if(product.status==true ){%>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="flexSwitchCheckChecked" checked />
+
+
+                                    </div>
+                                    <%}else{%>
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="flexSwitchCheckChecked" />
+
+
+                                        </div>
+                                        <%}%> -->
+                                  <form action="/webadmin/updatepro" enctype="multipart/form-data" method="post">
+                                    <% if(product.status){ %>
+                                      <input type="hidden" value="<%= product._id %>" name="id" />
+                                      <input type="hidden" value="false" name="status" />
+                                      <input type="submit" value="Disable" class="btn btn-warning text-white">
+                                      <% }else{ %>
+                                        <input type="hidden" value="<%= product._id %>" name="id" />
+                                        <input type="hidden" value="true" name="status" />
+                                        <input type="submit" value="Enable" class="btn btn-info">
+                                        <% } %>
+
+                                  </form>
+                            </td>
+                            <!-- <td colspan="2">
+                                <div class="btn btn-outline-primary">
+                                    <a href="/webadmin/productDetails?id=<%= product._id %>">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+
+
+                            </td> -->
+
+
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+
+        <%- include('../layouts/footer') -%>

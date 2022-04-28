@@ -1,0 +1,111 @@
+<%- include('./layouts/header') -%>
+    <%- include('./layouts/sidenav') -%>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Users</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/webadmin/alluser">View
+                            Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body">Category</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/webadmin/allcategory">View
+                            Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">Products</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/webadmin/allproduct">View
+                            Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Orders</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/webadmin/allOrder">View
+                            Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Orders
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+
+                        <tr>
+
+                            <th>User Id</th>
+                            <th>Total Amount</th>
+                            <th>Order Status</th>
+                            <th>Details</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>User Id</th>
+                            <th>Total Amount</th>
+                            <th>Order Status</th>
+                            <th>Details</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <% data.forEach(function(order){ %>
+                            <tr>
+                                <td>
+                                    <%if(order.user_id!=null){%>
+
+                                        <%= order.user_id.name %>
+
+                                            <%}else{%>
+                                                -
+                                                <% }%>
+                                </td>
+                                <td>
+                                    <%= "$" +order.total_amount %>
+                                </td>
+
+                                <td>
+                                    <%= order.order_status %>
+                                </td>
+
+                                <td colspan="2">
+                                    <div class="btn btn-outline-primary">
+                                        <a href="/webadmin/orderDetails?id=<%= order._id %>">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+
+
+                                </td>
+
+
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <%- include('layouts/footer') -%>

@@ -1,0 +1,77 @@
+<%- include('../layouts/header') -%>
+<%- include('../layouts/sidenav') -%>
+<div class="col">
+    <table class="table table-bordered">
+      <tbody>
+
+        <tr>
+          <th colspan="4" class="bg-dark text-white">
+            Product Details
+          </th>
+        </tr>
+        <tr>
+          <th>Category Name</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price Per Item</th>
+        </tr>
+        <% (data.order_detail).forEach(function(order){ %>
+          <tr>
+            <td><%= order.category_id != null ? order.category_id.category_name : 'N/A' %></td>
+            <td><%= order.product_id != null ? order.product_id.product_name : 'N/A' %></td>
+            <td><%= order.quantity %></td>
+            <td>$<%= order.price_per_item %></td>
+          </tr>
+        <% }); %>
+        <tr>
+          <th colspan="4" class="bg-dark text-white">
+            Order Details
+          </th>
+          <tr>
+            <th>Order Status</th>
+            <th>Coupon Applied</th>
+            <th>Coupon Discount Amount</th>
+            <th>Total Amount</th>
+          </tr>
+          <tr>
+            <td><%= data.order_status %></td>
+            <td><%= data.is_coupoun_applied %></td>
+            <td>$<%= data.coupon_discount == null ? 0 : data.coupon_discount %></td>
+            <td>$<%= data.total_amount %></td>
+
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Address</th>
+          </tr>
+          <tr>
+            <td><%= data.name %></td>
+            <td><%= data.email %></td>
+            <td><%= data.contact %></td>
+            <td><%= data.shipping_address %></td>
+
+          </tr>
+        </tr>
+        <% if(data.review != '[]'){ %>
+          <th colspan="4" class="bg-dark text-white">
+            Reviews
+          </th>
+          <tr>
+            <th colspan="2">Rate</th>
+            <th colspan="2">Review</th>
+
+          </tr>
+          <% (data.review).forEach(function(rev){ %>
+          <tr>
+            <td colspan="2"><%= rev.rate %></td>
+            <td colspan="2"><%= rev.review %></td>
+          </tr>
+          <% }); %>
+        <% } %>
+        <tr></tr>
+      </tbody>
+    </table>
+</div>
+<%- include('../layouts/footer') -%>

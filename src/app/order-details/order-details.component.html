@@ -1,0 +1,108 @@
+<ngx-spinner></ngx-spinner>
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>View Order</h2>
+      <ol>
+        <li><a routerLink="/layout/home">Home</a></li>
+        <li>Orders</li>
+      </ol>
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container">
+
+    <div class="row portfolio-container" data-aos="fade-up">
+      <div class="col-lg-12 col-md-6 portfolio-item filter-card" >
+        <table class=" table">
+          <tr class="bg-dark">
+            <th colspan="4" class="text-white">
+              Customer Detail
+            </th>
+          </tr>
+          <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th></th>
+            <th>Order Status</th>
+
+          </tr>
+          <tr>
+            <td>{{ orderdata._id}}</td>
+            <td>{{ orderdata.created_at |date:"dd-M-Y"}}</td>
+            <td></td>
+            <td>{{ orderdata.order_status}}</td>
+
+          </tr>
+          <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Shipping Address</th>
+
+          </tr>
+
+          <tr>
+            <td>{{ orderdata.name}}</td>
+            <td>{{ orderdata.email}}</td>
+            <td>{{ orderdata.contact}}</td>
+            <td>{{ orderdata.shipping_address}}</td>
+          </tr>
+          <tr class="bg-dark">
+            <th colspan="4" class="text-white">
+              Order Detail
+            </th>
+          </tr>
+
+          <tr>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price Per Item</th>
+          </tr>
+          <tr *ngFor="let pro of orderdata.order_detail">
+            <td>{{ pro.category_id.category_name}}</td>
+            <td>{{ pro.product_id.product_name}}</td>
+            <td>{{ pro.quantity}}</td>
+            <td>{{ pro.product_id.product_price | currency:'INR':'symbol-narrow'}}</td>
+          </tr>
+          <tr>
+            <th colspan="2"></th>
+            <th>Discount</th>
+            <td>{{orderdata.coupon_discount | currency:'INR':'symbol-narrow'}}</td>
+          </tr>
+          <tr>
+            <th colspan="2"></th>
+            <th>Total Amount</th>
+            <td>{{orderdata.total_amount | currency:'INR':'symbol-narrow'}}</td>
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+    <h6 *ngIf="orderdata.status!='Complete'">Note* : You can give Feedback to this order after Completion</h6>
+    <div class="row">
+
+      <div class="col-md-12" *ngIf="orderdata.status=='Complete' && orderdata.review == '[]'">
+        <!-- <div class="col-md-12"> -->
+          <form (submit)="submit()">
+            <div class="form-group">
+              <label for="">Rate</label>
+              <input type="number" min="1" #rate="ngModel" name="rate" [(ngModel)]="formModel.rate" class="form-control" placeholder="Rate" required>
+            </div>
+            <div class="form-group">
+              <label for="">Review</label>
+              <input type="text" #review="ngModel" name="review" [(ngModel)]="formModel.review"class="form-control" placeholder="Review" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</section>

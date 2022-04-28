@@ -1,0 +1,1367 @@
+{
+	"info": {
+		"_postman_id": "99bee77b-94ec-4ddd-9af3-cabd636a4d88",
+		"name": "Ecomm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "1. Category",
+					"item": [
+						{
+							"name": "1. Add Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_name",
+											"value": "Category New",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/desktop/Traning Php/HTML/pics/bulb.PNG"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/addCategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"addCategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get All Category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/getcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getCategoryById/619226b7a37351d2d4edc5bd",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getCategoryById",
+										"619226b7a37351d2d4edc5bd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. update Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_name",
+											"value": "cat1",
+											"type": "text"
+										},
+										{
+											"key": "category_image",
+											"type": "file",
+											"src": "/D:/desktop/Traning Php/HTML/pics/c3.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/updatecategory/619228e3c46543719e66fde9",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"updatecategory",
+										"619228e3c46543719e66fde9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Delete Category(not req)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/deleteCategory/619228e3c46543719e66fde9",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"deleteCategory",
+										"619228e3c46543719e66fde9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2. Product",
+					"item": [
+						{
+							"name": "1.  Add product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "61961424dbeefdc22c610a4c",
+											"type": "text"
+										},
+										{
+											"key": "product_name",
+											"value": "pro1",
+											"type": "text"
+										},
+										{
+											"key": "product_price",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Demo testing product",
+											"type": "text"
+										},
+										{
+											"key": "author_name",
+											"value": "daman",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "Max 3",
+											"type": "file",
+											"src": [
+												"/D:/desktop/Traning Php/HTML/pics/bulb.PNG",
+												"/D:/desktop/Traning Php/HTML/pics/c1.png"
+											]
+										},
+										{
+											"key": "discount_applicable",
+											"value": "true",
+											"description": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "discounted_price",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "100",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/addProduct",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"addProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get all Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getAllproduct",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getAllproduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getProductById/6194e7fcbfcb799d75ae96b7",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getProductById",
+										"6194e7fcbfcb799d75ae96b7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Update Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "619226f9a37351d2d4edc5c2",
+											"type": "text"
+										},
+										{
+											"key": "product_name",
+											"value": "pro123",
+											"type": "text"
+										},
+										{
+											"key": "product_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Demo testing product 123",
+											"type": "text"
+										},
+										{
+											"key": "author_name",
+											"value": "daman 123",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/desktop/Traning Php/HTML/pics/c3.png"
+										},
+										{
+											"key": "stock",
+											"value": "50",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/updateProduct/6194e7fcbfcb799d75ae96b7",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"updateProduct",
+										"6194e7fcbfcb799d75ae96b7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Delete Product(not req)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/deleteProduct/6192429371af4f56ea9888c0",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"deleteProduct",
+										"6192429371af4f56ea9888c0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "3. Admin Auth",
+					"item": [
+						{
+							"name": "1. Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Admin",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "7894561230",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Jalandhar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/register",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Get Profile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "6191f298e5e8c0c5eca9b1aa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/profile",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "6191f298e5e8c0c5eca9b1aa",
+											"description": "_id",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Admin123",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "0000000000",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Jalandhar 123 0000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/updateprofile",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"updateprofile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "4. Coupon",
+					"item": [
+						{
+							"name": "1. Add Coupon",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "coupon_code",
+											"value": "coupon_1",
+											"type": "text"
+										},
+										{
+											"key": "offer_amount",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Demo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/coupon",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"coupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Coupon",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/coupon",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"coupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Delete Coupon",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/coupon/619603f862594c39e522167d",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"coupon",
+										"619603f862594c39e522167d"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "5. Advertise",
+					"item": [
+						{
+							"name": "Add Advertise",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Halloween",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/desktop/Traning Php/HTML/pics/c1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Advertise",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Advertise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise/619607061c0501a247e7dbdc",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise",
+										"619607061c0501a247e7dbdc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "1. Auth",
+					"item": [
+						{
+							"name": "1. Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "User",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "dmnpreet@o7.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "9877899877",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Jalandhar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/register",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dmnpreet@o7.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Get Profile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "{{customer_id}}",
+											"description": "_id",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/profile",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "{{customer_id}}",
+											"description": "_id",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "User123",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "9877899123",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Jalandhar 123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/updateprofile",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"updateprofile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Change Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "61939551f9455bee0135a308",
+											"type": "text"
+										},
+										{
+											"key": "old_password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "confirm_password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/changepassword",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"changepassword"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2. Category",
+					"item": [
+						{
+							"name": "1. Get All Category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/getcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getCategoryById/619226b7a37351d2d4edc5bd",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getCategoryById",
+										"619226b7a37351d2d4edc5bd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "3. Product",
+					"item": [
+						{
+							"name": "1. Get all Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getAllproduct",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getAllproduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/getProductById/6192429371af4f56ea9888c0",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"getProductById",
+										"6192429371af4f56ea9888c0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Get Discounted Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/customer/getDiscountedProduct",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"getDiscountedProduct"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "4. Order",
+					"item": [
+						{
+							"name": "1. Make Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "61939551f9455bee0135a308",
+											"type": "text"
+										},
+										{
+											"key": "total_amount",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "category_id[]",
+											"value": "61961424dbeefdc22c610a4c",
+											"type": "text"
+										},
+										{
+											"key": "product_id[]",
+											"value": "6196148a36d74c377c858df6",
+											"type": "text"
+										},
+										{
+											"key": "quantity[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "price_per_item[]",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "619226f9a37351d2d4edc5c2",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "product_id",
+											"value": "6193813d6c1e4dbf406bd43e",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "quantity",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "price_per_item",
+											"value": "5",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "is_coupoun_applied",
+											"value": "true",
+											"description": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "coupon_discount",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "coupon_id",
+											"value": "619603fd62594c39e522167f",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/order",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get My Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "61939551f9455bee0135a308",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/myorder",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"myorder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Cancel Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "order_status",
+											"value": "cancel",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/order/61947fe6eb5b7792eda62e01",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"order",
+										"61947fe6eb5b7792eda62e01"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "5. Review",
+					"item": [
+						{
+							"name": "1. Add Review",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "order_id",
+											"value": "61947f95b4a01f38c1480540",
+											"type": "text"
+										},
+										{
+											"key": "rate",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "review",
+											"value": "Good",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/reviews",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "6. Wishlist",
+					"item": [
+						{
+							"name": "1. Add Wishlist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "61939551f9455bee0135a308",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "619226f9a37351d2d4edc5c2",
+											"type": "text"
+										},
+										{
+											"key": "product_id",
+											"value": "6193813d6c1e4dbf406bd43e",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/wishlist",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Wishlist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/customer/wishlist/6195d7603fea8fd4ce72dc6a",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"wishlist",
+										"6195d7603fea8fd4ce72dc6a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Delete Wishlist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/customer/wishlist/6195d7603fea8fd4ce72dc6a",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"wishlist",
+										"6195d7603fea8fd4ce72dc6a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "7. Coupon",
+					"item": [
+						{
+							"name": "1. Get Coupon",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/customer/coupon",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"coupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Get Coupon By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/customer/coupon/619603fd62594c39e522167f",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"coupon",
+										"619603fd62594c39e522167f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "8. Advertise",
+					"item": [
+						{
+							"name": "Add Advertise",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Halloween",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/desktop/Traning Php/HTML/pics/c1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Advertise",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Advertise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/admin/advertise/619607061c0501a247e7dbdc",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"advertise",
+										"619607061c0501a247e7dbdc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

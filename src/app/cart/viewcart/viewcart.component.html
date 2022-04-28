@@ -1,0 +1,106 @@
+<ngx-spinner></ngx-spinner>
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>View Cart</h2>
+      <ol>
+        <li><a routerLink="/layout/home">Home</a></li>
+        <li>Cart</li>
+      </ol>
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container">
+
+    <div class="row portfolio-container" data-aos="fade-up">
+      <div class="col-lg-12 col-md-6 portfolio-item filter-card" >
+        <form (submit)="placeOrder()" *ngIf="cartlenght!=0">
+        <table class="table table-borderless">
+          <tr class="bg-dark text-white">
+            <th>#</th>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+          </tr>
+          <tr *ngFor="let d of data; index as i">
+              <th>{{i+1}}</th>
+              <td>{{d.category_id.category_name}}</td>
+              <td>{{d.product_id.product_name}}</td>
+              <td>{{d.quantity}}</td>
+              <td><button type = "button" (click)="removeCart(d._id)" class="btn bg-danger">Remove</button></td>
+          </tr>
+          <tr>
+            <th colspan="5"></th>
+          </tr>
+          <tr class="bg-dark text-white">
+            <td colspan="5">Shipping Details</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type="text" #name="ngModel" name="name" [(ngModel)]="placeOrderForm.name" class="form-control" placeholder="Name" required>
+            </td>
+            <td></td>
+            <td>Email</td>
+            <td>
+              <input type="email" #email="ngModel" name="email" [(ngModel)]="placeOrderForm.email" class="form-control" placeholder="email" required>
+            </td>
+          </tr>
+          <tr>
+            <td>Contact</td>
+            <td>
+              <input type="text" #contact="ngModel" name="contact" [(ngModel)]="placeOrderForm.contact" class="form-control" placeholder="Contact" required>
+            </td>
+            <td></td>
+            <td>Card Number</td>
+            <td>
+              <input type="text" #card_number="ngModel" name="card_number" [(ngModel)]="placeOrderForm.card_number" class="form-control" placeholder="Card Number" required>
+            </td>
+          </tr>
+          <tr>
+            <td>CVV</td>
+            <td>
+              <input type="text" #cvv="ngModel" name="cvv" [(ngModel)]="placeOrderForm.cvv" class="form-control" placeholder="cvv" required>
+            </td>
+            <td></td>
+            <td>Expiry Date</td>
+            <td>
+              <input type="text" #expiry_date="ngModel" name="expiry_date" [(ngModel)]="placeOrderForm.expiry_date" class="form-control" placeholder="Expiry Date" required>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Shipping Address</td>
+            <td></td>
+            <td colspan="2">
+              <textarea #shipping_address="ngModel" name="shipping_address" [(ngModel)]="placeOrderForm.shipping_address" class="form-control" placeholder="Shipping Address" required></textarea>
+            </td>
+          </tr>
+          <tr *ngIf="isLoggedIn">
+            <th>Apply Coupon</th>
+            <th>
+              <select class="form-control" (change)="applyCoupon($event)">
+                <option value="">Select Coupon</option>
+                <option [value]="cop['_id']" *ngFor="let cop of couponData;">{{ cop['coupon_code']}}</option>
+              </select>
+            </th>
+            <th colspan="2"></th>
+            <th>
+              <button type="submit" class="btn bg-success text-light" >Place Order</button>
+            </th>
+          </tr>
+          <tr *ngIf="!isLoggedIn">
+            <th colspan="5"> Please Login To place order and related coupons </th>
+          </tr>
+        </table>
+      </form>
+      </div>
+    </div>
+
+  </div>
+</section>

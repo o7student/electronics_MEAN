@@ -1,0 +1,74 @@
+<%- include('../layouts/header') -%>
+<%- include('../layouts/sidenav') -%>
+
+<form action="/webadmin/addcoupon" method="post">
+<div class="row pt-5">
+    <div class="col-md-6">
+      <div class="row">
+        <% if (locals.info) { %>
+          <h4 class="alert alert-info"><%= info %></h4>
+        <% } %>
+        <% if (locals.error) { %>
+          <h4  class="alert alert-danger"><%= error %></h4>
+        <% } %>
+        <div class="col-md-4">
+          Coupon Code:<br/>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class='form-control' name="coupon_code" id=""><br/>
+        </div>
+        <div class="col-md-4">
+          Offer Amount:<br/>
+        </div>
+        <div class="col-md-8">
+          <input type="number" class='form-control' name="offer_amount" value="0" min="0" id=""><br/>
+        </div>
+        <div class="col-md-4">
+          Description:<br/>
+        </div>
+        <div class="col-md-8">
+          <textarea class='form-control' name="description" id=""></textarea><br/>
+        </div>
+        <div class="col-md-12">
+          <input type="submit" name="Save" value="Save " class="form-control btn btn-success">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <table id="datatablesSimple">
+        <thead>
+            <tr>
+              <th>Coupon Code</th>
+              <th>Offer Amount</th>
+              <th>Description</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+              <th>Coupon Code</th>
+              <th>Offer Amount</th>
+              <th>Description</th>
+            </tr>
+        </tfoot>
+        <tbody>
+          <% data.forEach(function(cat){ %>
+            <tr>
+                <td>
+                  <%= cat.coupon_code %>
+                </td>
+                <td>
+                  $<%= cat.offer_amount %>
+                </td>
+                <td>
+                  <%= cat.description %>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+</div>
+  </form>
+
+<%- include('../layouts/footer') -%>
+

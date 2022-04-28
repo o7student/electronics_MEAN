@@ -1,0 +1,86 @@
+<%- include('../layouts/header') -%>
+    <%- include('../layouts/sidenav') -%>
+
+        <div class="col">
+            <table id="datatablesSimple">
+                <thead>
+
+                    <tr>
+
+                        <th>User Id</th>
+                        <th>Total Amount</th>
+                        <th>Order Status</th>
+                        <th>Details</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Total Amount</th>
+                        <th>Order Status</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <% data.forEach(function(order){ %>
+                        <tr>
+                            <td>
+                                <%if(order.user_id!=null){%>
+
+                                    <%= order.user_id.name %>
+
+                                        <%}else{%>
+                                            -
+                                            <% }%>
+                            </td>
+                            <td>
+                                <%= "$" +order.total_amount %>
+                            </td>
+
+                            <td>
+                                <%= order.order_status %>
+                            </td>
+
+                            <td>
+                                <div class="btn btn-outline-primary">
+                                    <a href="/webadmin/orderDetails?id=<%= order._id %>">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                              <% if(order.order_status == "Pending") { %>
+                                <form action="/webadmin/updateorderstatus" method="post">
+                                    <input type="hidden" value="<%= order._id %>" name="id" />
+                                    <input type="hidden" value="Approve" name="order_status" />
+                                    <button type="submit" class="btn btn-success text-white btn-sm" title="Approve"><i class="fa fa-check"></i></button>
+                                </form>
+
+                                <form action="/webadmin/updateorderstatus" method="post">
+                                    <input type="hidden" value="<%= order._id %>" name="id" />
+                                    <input type="hidden" value="Cancel" name="order_status" />
+                                    <button type="submit" class="btn btn-danger text-white btn-sm" title="Cancel"><i class="fa fa-times"></i></button>
+                                </form>
+                              <% } else if(order.order_status == "Approve") { %>
+                                <form action="/webadmin/updateorderstatus" method="post">
+                                    <input type="hidden" value="<%= order._id %>" name="id" />
+                                    <input type="hidden" value="Complete" name="order_status" />
+                                    <button type="submit" class="btn btn-success text-white btn-sm" title="Complete"><i class="fa fa-check"></i></button>
+                                </form>
+                              <% } else { %>
+                                <%= order.order_status %>
+                              <% }  %>
+
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+
+        <%- include('../layouts/footer') -%>

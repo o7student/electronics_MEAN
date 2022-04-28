@@ -1,0 +1,33 @@
+<ngx-spinner></ngx-spinner>
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title mt-5">
+      <h2 class="pt-5 d-inline">List Advertise</h2>
+      <a routerLink="/adminlayout/addadvertise" class="btn btn-success d-inline" style="float: right;">Add Advertise</a>
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>Title</th>
+        <th>Thumbnail</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let advertise of alladvertise">
+        <td>{{ advertise['title'] }}</td>
+        <td>
+          <img [src]="getSanitizerUrl(advertise['image'])" width="150px">
+        </td>
+        <td>
+          <a [routerLink]="['/adminlayout/editadvertise',advertise['_id']]">
+            <i class="fa fa-trash text-danger" (click)="del(advertise['_id'])"></i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- End Our Clients Section -->
+
+<!-- End #main -->

@@ -1,0 +1,144 @@
+<%- include('../layouts/header') -%>
+    <%- include('../layouts/sidenav') -%>
+
+        <div class="col">
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+
+                        <th>Category name</th>
+                        <td>
+                            <%if(product.category_id!=null){%>
+
+                                <%= product.category_id.categoryname %>
+
+                                    <%}else{%>
+                                        -
+                                        <% }%>
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <th>Product Name</th>
+
+                        <td>
+                            <%= product.product_name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Product Price</th>
+
+                        <td>
+                            <%= "$" + product.product_price %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+
+                        <td>
+                            <%= product.description %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Stock</th>
+
+                        <td>
+                            <%= product.stock %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>View Count</th>
+
+                        <td>
+                            <%= product.view_count %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Discount Applicable</th>
+                        <td>
+                            <% if(product.discount_applicable==true ){%>
+                                <form class="form-check form-switch" method="get"
+                                    action="/changeDiscountStatus?id=product.id&status=true">
+                                    <input class="form-check-input" type="checkbox" role="switch" checked
+                                        id="flexSwitchCheckChecked" />
+
+
+                                </form>
+                                <%}else{%>
+
+                                    <form class="form-check form-switch" method="get"
+                                        action="/changeDiscountStatus?id=product.id&status=false">
+                                        <input class="form-check-input " type="checkbox" role="switch"
+                                            id="flexSwitchCheckUnChecked" />
+
+
+                                    </form>
+                                    <%}%>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th>Discounted Price</th>
+
+                        <td>
+                            <%= "$" + product.discounted_price %>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th>Status</th>
+
+                        <td>
+                            <% if(product.status==true ){%>
+                                <form class="form-check form-switch" method="get"
+                                    action="/changeStatus?id=product.id&status=true">
+                                    <input type="submit">
+                                    <input class="form-check-input" type="checkbox" role="switch" checked
+                                        id="flexSwitchCheckChecked" />
+                                    </input>
+
+
+
+                                </form>
+                                <%}else{%>
+
+                                    <form class="form-check form-switch" method="get"
+                                        action="/changeStatus?id=product.id&status=false">
+
+                                        <input class="form-check-input " type="checkbox" role="switch"
+                                            id="flexSwitchCheckUnChecked" />
+
+
+                                    </form>
+                                    <%}%>
+                        </td>
+
+                    </tr>
+
+
+
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="row">
+
+
+                <% product.image.forEach(function(imagePath){ %>
+                    <div class="col mt-4 sm">
+
+                        <img class="card" width="200" height="200" src="/public/<%= imagePath %>" />
+
+
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+
+        <%- include('../layouts/footer') -%>
